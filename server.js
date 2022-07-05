@@ -38,7 +38,7 @@ io.on('connection', (socket)=>{
 
 
 app.get("*", (req, res)=>{
-    res.sendFile(path.join(__dirname, "portfolio","build","index.html"))
+    res.sendFile(path.join(__dirname, "./portfolio","build","index.html"))
 })
 
 httpServer.listen(PORT, ()=>{
