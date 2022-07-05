@@ -30,12 +30,15 @@ io.on('connection', (socket)=>{
         console.log(reason);
         socket.removeAllListeners(socket.eventNames());
     })
+
 })
 
 
 
 
-
+app.get("*", (req, res)=>{
+    res.sendFile(path.join(__dirname, "portfolio","build"))
+})
 
 httpServer.listen(PORT, ()=>{
     console.log("listening @ "+PORT);

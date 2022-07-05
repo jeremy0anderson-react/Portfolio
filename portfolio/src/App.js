@@ -80,7 +80,7 @@ function App() {
               <Route exact path={"/home"} element={<Divider/>}/>
               <Route exact path={"/about"} element={<Divider/>}/>
               <Route exact path={"/contact"} element={<Contact/>}/>
-              <Route exact path={"/contact/live"} element={<Live/>}/>
+              <Route path={"/contact/:option"} element={<Live/>}/>
           </Routes>
 
 
