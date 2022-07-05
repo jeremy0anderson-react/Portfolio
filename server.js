@@ -5,7 +5,8 @@ const express = require('express'),
     httpServer=require('http').createServer(app),
     {Server}=require('socket.io'),
     path=require('path'),
-    io = new Server(httpServer);
+    io = new Server(httpServer,{
+    });
 
 app.use(json());
 app.use(urlencoded({extended:true}));
@@ -37,7 +38,7 @@ io.on('connection', (socket)=>{
 
 
 app.get("*", (req, res)=>{
-    res.sendFile(path.join(__dirname, "portfolio","build"))
+    res.sendFile(path.join(__dirname, "portfolio","build","index.html"))
 })
 
 httpServer.listen(PORT, ()=>{
