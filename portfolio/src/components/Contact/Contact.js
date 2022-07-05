@@ -1,6 +1,9 @@
-import {Component} from 'react';
-import {Box, Button, Card, FormControl, TextField, Typography} from "@mui/material";
+import {Component, useContext, useEffect, useState} from 'react';
+import {Box, Button, Card, FormControl, TextField, Typography, Link} from "@mui/material";
 import {init, send} from 'emailjs-com';
+import {SocketContext} from "../../context/socket";
+// import {Link} from "react-router-dom";
+
 const serviceID="service_m39dxxm";
 const templateID="template_1hx0gvs";
 const publicKey="Mmct4HTh_4NTqM50n";
@@ -8,6 +11,51 @@ const inputSx = {
     display: "flex",
     mx: "10px"
 }
+
+export function Live(props){
+    const socket = useContext(SocketContext);
+    const [connected, setConnected] = useState(false);
+    useEffect(()=>{
+        socket.on('connect', ()=>{
+            setConnected(true);
+            console.log(socket.id);
+        })
+
+        socket.on('disconnect', (reason)=>{
+            console.log(reason);
+            setConnected(false);
+        })
+
+
+        return()=>{
+            socket.off('connect');
+            socket.off('message');
+            socket.off('disconnect');
+        }
+    },[connected])
+
+    return(
+        <Box>
+            <Button
+                onClick={()=>{socket.connect()}}
+            >
+                Connect
+            </Button>
+            <Button
+                onClick={()=>{socket.disconnect()}}
+            >
+                Disconnect
+            </Button>
+        </Box>
+    )
+}
+
+
+
+
+
+
+
 class Contact extends Component{
     constructor(props) {
         super(props);
@@ -108,6 +156,7 @@ class Contact extends Component{
                     >
                         Contact
                     </Typography>
+                    <Typography variant={"caption"}>Or request a <Link href={"/contact/live"}>Live Chat</Link></Typography>
                 </Box>
                 <Box id={"Contact-form-container"}>
                     <form onSubmit={this.handleSubmit}>

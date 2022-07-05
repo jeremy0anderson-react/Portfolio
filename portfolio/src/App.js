@@ -7,7 +7,7 @@ import {Routes, Route} from 'react-router-dom';
 
 import Navbar from "./components/Nav/Navbar";
 import SideMenu from "./components/Nav/Menu";
-import Contact from "./components/Contact/Contact";
+import Contact, {Live} from "./components/Contact/Contact";
 
 
 //Config
@@ -80,6 +80,7 @@ function App() {
               <Route exact path={"/home"} element={<Divider/>}/>
               <Route exact path={"/about"} element={<Divider/>}/>
               <Route exact path={"/contact"} element={<Contact/>}/>
+              <Route exact path={"/contact/live"} element={<Live/>}/>
           </Routes>
 
 
