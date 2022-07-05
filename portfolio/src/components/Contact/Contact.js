@@ -4,6 +4,10 @@ import {init, send} from 'emailjs-com';
 const serviceID="service_m39dxxm";
 const templateID="template_1hx0gvs";
 const publicKey="Mmct4HTh_4NTqM50n";
+const inputSx = {
+    display: "flex",
+    mx: "10px"
+}
 class Contact extends Component{
     constructor(props) {
         super(props);
@@ -115,6 +119,7 @@ class Contact extends Component{
                                     label={"Name"}
                                     name={"name"}
                                     onChange={this.handleNameChange}
+                                    sx={inputSx}
                                 />
                             </FormControl>
                             <FormControl>
@@ -122,6 +127,7 @@ class Contact extends Component{
                                     label={"Email"}
                                     name={"email"}
                                     onChange={this.handleEmailChange}
+                                    sx={inputSx}
                                 />
                             </FormControl>
                             <FormControl>
@@ -129,6 +135,7 @@ class Contact extends Component{
                                     label={"Subject"}
                                     name={"subject"}
                                     onChange={this.handleSubjectChange}
+                                    sx={inputSx}
                                 />
                             </FormControl>
                         </Box>
@@ -145,6 +152,7 @@ class Contact extends Component{
                                     minRows={2}
                                     maxRows={5}
                                     onChange={this.handleMessageChange}
+                                    sx={inputSx}
                                 />
                             </FormControl>
                         </Box>
